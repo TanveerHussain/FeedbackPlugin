@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+    <title>Feedback Plugin</title>
+
+    <style>
+        html,body { height:100%; }
+        .highlighted { background: #ffffbc; }
+    </style>
+
+</head>
+<body>
+    <div class="container h-100" id="container">
+        <div class="row h-100 align-items-center" id="capture">
+            <div class="col-md-4 text-center">
+                <div class="card" style="width: 18rem; margin: 0 auto;">
+                    
+                    <div class="card-body">
+                      <h5 class="card-title">Success 1</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="javascript:;" class="btn btn-success">Capture</a>
+                    </div>
+                  </div>
+                
+            </div>
+
+            <div class="col-md-4 text-center">
+                <div class="card" style="width: 18rem; margin: 0 auto;">
+                    
+                    <div class="card-body">
+                      <h5 class="card-title">Primary 2</h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="javascript:;" class="btn btn-primary">Capture</a>
+                    </div>
+                  </div>
+                
+            </div>
+
+            <div class="col-md-4 text-center">
+                <div class="card" style="width: 18rem; margin: 0 auto;">
+                    
+                    <div class="card-body">
+                      <h5 class="card-title">Danger 23/h5>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      <a href="javascript:;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Capture</a>
+                    </div>
+                  </div>
+                
+            </div>
+        </div>
+
+        <!-- <input id="log" type="hidden"> -->
+        
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- Scripts -->
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/node_modules/html2canvas/dist/html2canvas.min.js"></script>
+    
+
+    <script>
+
+        // function imgCapture() {
+        //     html2canvas(document.querySelector("#capture")).then(canvas => {
+        //         document.querySelector('.container').appendChild(canvas)
+        //     });
+        // }
+
+        container.onmouseover = container.onmouseout = handler;
+
+        function handler(event) {
+
+            // function str(el) {
+            //     if (!el) return "null"
+            //     return el.className || el.tagName;
+            // }
+
+            // log.value += event.type + ':  ' +
+            //     'target=' + str(event.target) +
+            //     ',  relatedTarget=' + str(event.relatedTarget) + "\n";
+            // log.scrollTop = log.scrollHeight;
+
+            if (event.type == 'mouseover') {
+                // event.target.style.background = 'pink'
+                event.target.classList.add('highlighted')
+                // console.log(event.currentTarget.tagName)
+                event.target.addEventListener('click', event => {
+                    console.log(event.currentTarget.innerHTML)
+                    event.stopImmediatePropagation();
+                    html2canvas(document.getElementsByClassName("highlighted")[0]).then(canvas => {
+                        document.querySelector('.container').appendChild(canvas)
+                    });
+                })
+
+            }
+            if (event.type == 'mouseout') {
+                // event.target.style.background = ''
+                event.target.classList.remove('highlighted')
+            }
+
+        }
+        
+
+
+    </script>
+
+</body>
+</html>
