@@ -5,126 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Style Sheets -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap">
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="/css/app.css">
 
     <title>Feedback Plugin</title>
 
     <style>
         html,body { height:100%; }
-        .highlighted { background: #ffffbc; }
+        .highlighted { outline: rgb(255, 244, 95) 5px solid;}
     </style>
 
 </head>
 <body>
-    <div class="container h-100" id="container">
-        <div class="row h-100 align-items-center" id="capture">
-            <div class="col-md-4 text-center">
-                <div class="card" style="width: 18rem; margin: 0 auto;">
-                    
-                    <div class="card-body">
-                      <h5 class="card-title">Success</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="javascript:;" class="btn btn-success">Capture</a>
-                    </div>
-                  </div>
-                
-            </div>
+    <div class="overlay"></div>
+    
+    <div class="modalContainer" id="NoteText">
+        <div class="modalContent p-5 text-center">
+            <p class="lead m-0">Click on the part of the page you would like to give feedback about</p>
+        </div>
+    </div>
 
-            <div class="col-md-4 text-center">
-                <div class="card" style="width: 18rem; margin: 0 auto;">
-                    
-                    <div class="card-body">
-                      <h5 class="card-title">Primary</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="javascript:;" class="btn btn-primary">Capture</a>
-                    </div>
-                  </div>
-                
-            </div>
 
-            <div class="col-md-4 text-center">
-                <div class="card" style="width: 18rem; margin: 0 auto;">
-                    
-                    <div class="card-body">
-                      <h5 class="card-title">Danger</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="javascript:;" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Capture</a>
-                    </div>
-                  </div>
-                
+    <!-- Custom Modal -->
+    <div class="modalContainer" id="mainModal">
+        <div class="title">
+            <h4>Tawteen Survey</h4>
+            <a href="javascript:;" class="close">&times;</a>
+        </div>
+        <div class="modalContent p-5">
+            <div class="d-flex justify-content-center">
+                <div class="feedbackOption" id="specificOtp">
+                    <div class="icon specificOtp"></div>
+                    <h3>Specific feedback</h3>
+                    <p>I’d like to give feedback on a specific part of this page.</p>
+                </div>
+                <div class="feedbackOption">
+                  <div class="icon genericOtp"></div>
+                  <h3>Generic feedback</h3>
+                  <p>I’d like to give general feedback on the entire website.</p>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- <input id="log" type="hidden"> -->
+
+    <div class="container h-100" id="container">
+        <div id="capture">
+            <div class="row align-items-center">
+                <div class="col-md-7 p-5">
+                    <img src="/images/image1.jpeg" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-5 p-5">
+                    <h2 class="heading2">Article 1</h2>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices placerat est, in iaculis lorem dignissim id. Aliquam augue tortor, accumsan sit amet dictum varius, pretium quis erat. Proin eget imperdiet ligula. Pellentesque varius vestibulum ligula, at dignissim leo aliquam nec. Sed faucibus nisi scelerisque velit egestas.</p>
+                </div>
+            </div>
+    
+            <div class="row align-items-center">
+                <div class="col-md-7 p-5 order-2">
+                    <img src="/images/image2.jpeg" class="img-fluid" alt="">
+                </div>
+                <div class="col-md-5 p-5 order-1">
+                    <h2 class="heading2">Article 2</h2>
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultrices placerat est, in iaculis lorem dignissim id. Aliquam augue tortor, accumsan sit amet dictum varius, pretium quis erat. Proin eget imperdiet ligula. Pellentesque varius vestibulum ligula, at dignissim leo aliquam nec. Sed faucibus nisi scelerisque velit egestas.</p>
+                </div>
+            </div>    
+        </div>
+        
+
+        <div class="row align-items-center mb-5">
+            <div class="col-md-12 text-center">
+                <a href="javascript:;" class="btn btn-success openModal"><i class="fas fa-comment-dots"></i> Feedback</a>
+            </div>
+        </div>
         
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
     
     <!-- Scripts -->
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/node_modules/html2canvas/dist/html2canvas.min.js"></script>
     
 
     <script>
 
-        // function imgCapture() {
-        //     html2canvas(document.querySelector("#capture")).then(canvas => {
-        //         document.querySelector('.container').appendChild(canvas)
-        //     });
-        // }
+        $('.close').on('click', function(){
+            $('#mainModal, .overlay').hide();
+        });
 
-        container.onmouseover = container.onmouseout = handler;
+        $('.openModal').on('click', function(){
+            $('#mainModal, .overlay').show();
+        });
 
-        function handler(event) {
+        $('#specificOtp').on('click', function(e){
+            $('#mainModal').hide();
+            $('#NoteText').show();
 
-            // function str(el) {
-            //     if (!el) return "null"
-            //     return el.className || el.tagName;
-            // }
+            setTimeout(function(){
+                $('#NoteText').fadeOut();
+                $('.overlay').fadeOut();
 
-            // log.value += event.type + ':  ' +
-            //     'target=' + str(event.target) +
-            //     ',  relatedTarget=' + str(event.relatedTarget) + "\n";
-            // log.scrollTop = log.scrollHeight;
+                // highlighted element function
+                container.onmouseover = container.onmouseout = handler;
 
-            if (event.type == 'mouseover') {
-                // event.target.style.background = 'pink'
-                event.target.classList.add('highlighted')
-                // console.log(event.currentTarget.tagName)
-                event.target.addEventListener('click', event => {
-                    console.log(event.currentTarget.innerHTML)
-                    event.stopImmediatePropagation();
-                    html2canvas(document.getElementsByClassName("highlighted")[0]).then(canvas => {
-                        document.querySelector('.container').appendChild(canvas)
-                    });
-                })
+                function handler(event) {
 
-            }
-            if (event.type == 'mouseout') {
-                // event.target.style.background = ''
-                event.target.classList.remove('highlighted')
-            }
+                    if (event.type == 'mouseover') {                
+                        event.target.classList.add('highlighted')
+                        event.target.addEventListener('click', event => {
+                            console.log(event.currentTarget.innerHTML)
+                            event.stopImmediatePropagation();
+                            html2canvas(document.getElementsByClassName("highlighted")[0]).then(canvas => {
+                                document.querySelector('.container').appendChild(canvas)
+                            });
+                            container.onmouseover = null;
+                        })
 
-        }
+                    }
+                    if (event.type == 'mouseout') {
+                        event.target.classList.remove('highlighted')
+                    }
+
+                }
+
+            }, 1500)
+            
+        });
         
 
 
